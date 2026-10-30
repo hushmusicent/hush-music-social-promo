@@ -79,6 +79,7 @@ function seedPosts(): Post[] {
 
 function loadJSON<T>(key: string, fallback: T): T {
   try {
+    if (typeof localStorage === 'undefined') return fallback;
     const v = localStorage.getItem(key);
     return v ? JSON.parse(v) : fallback;
   } catch (e) {
@@ -88,9 +89,11 @@ function loadJSON<T>(key: string, fallback: T): T {
 
 function saveJSON<T>(key: string, val: T): void {
   try {
+    if (typeof localStorage === 'undefined') return;
     localStorage.setItem(key, JSON.stringify(val));
   } catch (e) {
-    // Keep in-memory copy if storage quota is reached
+    // Keep in-memory copy if storage quota is reached or the preview
+    // iframe blocks storage access
   }
 }
 
