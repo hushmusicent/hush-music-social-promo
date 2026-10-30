@@ -1,31 +1,52 @@
-# Hush Music Social Promo — V1 for Google AI Studio
+# Hush Music Social Promo — V1 (React + Vite)
 
-Single-file web app. No build step, no backend, no API keys.
+A modern React & TypeScript web application rewritten from the original Hush Music Social Promo prototype for Google AI Studio.
 
-## What V1 does
+## Features Preserved & Ported
 
-- Compose once, select Facebook, Instagram, TikTok, YouTube, Threads, Snapchat, X, and Bluesky accounts
-- Per-network options (YouTube title/visibility/Video vs Shorts/made-for-kids/thumbnail/tags, Threads topic/spoiler, Facebook/Instagram Post/Story/Reel, TikTok disclose/AI label, Snapchat Story/Spotlight)
-- Description tools: Generate, Shorten, Expand, More Casual, Hook, CTA, Hashtags
-- Media upload, photo + video carousel, multi-post threads for X / Bluesky / Threads
-- Cross-posting, Post Now, Schedule, Drafts, Ideas, repeat (daily capped at 20), timeslots, require approval
-- Queue filters: Scheduled Posts, Published, Drafts, Ideas, Awaiting Approval, Not Approved, Expired Approval, Failed — plus bulk duplicate, delete, and pause
-- Media Gallery, Timeslots, Link-In-Bio placeholder, and local-only Analytics (counts from this app only, not platform likes/views)
+- **Multi-Network Compose**: Create posts and select accounts across Facebook, Instagram, TikTok, YouTube, Threads, Snapchat, X, and Bluesky.
+- **Cross-Posting**: Post to a designated main account and auto-select all linked accounts with one click.
+- **Network Customization**:
+  - **YouTube**: Video title, visibility (Public/Private/Unlisted), type (Video vs Shorts), Made-for-kids declaration, thumbnail upload, tags.
+  - **Threads**: Topic tagging, spoiler image, and spoiler text options.
+  - **Facebook**: Facebook Post, Story, and AI-generated content declaration.
+  - **Instagram**: Feed Post, Reel, Story, and AI-generated content declaration.
+  - **TikTok**: Promotional content disclosure, AI-generated label, and sound options.
+  - **Snapchat**: Story and Spotlight posting options.
+- **AI-Style Description Tools**: Generate Post, Shorten, Expand, More Casual, Create Hook, Create CTA, and Add Hashtags with instant prompt assistance.
+- **Media Support**: Drag-and-drop / upload photos and videos with in-session previews and carousel support for Instagram & Threads.
+- **Multi-Post Threads**: Compose threaded chains for X, Bluesky, and Threads.
+- **Scheduling & Repetition**:
+  - Post Now (moves to local Published status with 1-click Copy / Share).
+  - Schedule Post with exact date and time.
+  - Drafts & Ideas status storage.
+  - Repetition settings: Day (capped at 20 consecutive times), Week, Month (with day/weekday rules), and Timeslots.
+  - Post approval requirement toggle.
+- **Queue & Filter Management**:
+  - Filter by status: Scheduled Posts, Published, Drafts, Ideas, Awaiting Approval, Not Approved, Expired Approval, Failed.
+  - Bulk actions: Select All, Bulk Duplicate Posts, and Delete selected.
+  - Card actions: Copy text to clipboard, Share via Web Share API, Duplicate to Drafts, Pause / Resume scheduling, Approve / Reject, and Delete.
+- **Media Gallery**: Persistent metadata and preview management for uploaded media files.
+- **Timeslots**: Custom daily time schedules for Monday through Sunday.
+- **Link-in-Bio Manager**: Add and manage custom profile links.
+- **Dashboard & Local Analytics**: Quick-glance counters (Total, Scheduled, Published, Drafts) and recent post review.
+- **Settings**: Restore Street Legends seed data and manage local workspace storage.
 
-Honest V1 limit, also shown in the app: this version queues and prepares posts. Post Now moves a post to Published in the local queue and gives Copy text / Share buttons for manual publishing. Live direct posting needs platform API connections in phase 2.
+## Tech Stack
 
-Seeded with the user's two real Street Legends examples from his screenshots. No other accounts, links, or Play URLs were invented.
+- **Framework**: React 18 with TypeScript
+- **Bundler**: Vite 5
+- **Styling**: Responsive custom CSS preserving the Hush Music visual identity
+- **Storage**: Browser localStorage with safe failovers
 
-## Use it in Google AI Studio
+## Development
 
-1. Go to aistudio.google.com
-2. Create a new app (tap + / New app, or the new-app button in AI Studio)
-3. Import / pull this code into the new app: upload `index.html` as the app's main file, or paste its contents into the app's code view if your AI Studio project starts empty. Keep the file name `index.html`.
-4. Preview it in AI Studio: check Dashboard, Create Post, Queue filters, and the two seeded Street Legends posts.
-5. Publish it from AI Studio to get its *.ai.studio link, the same way his other hubs were published.
-6. Share that published link with testers. Other people open the link and use their own copy in their browser; posts, drafts, and media metadata save in each person's browser localStorage in V1 — there is no shared backend yet.
+```bash
+npm install
+npm run dev
+```
 
-## Notes for phase 2
-
-- Shared accounts, team approvals, real analytics, Social Inbox, and direct posting to Meta, TikTok, YouTube, X, and others all need a backend and each platform's API approval. Do not claim direct posting until those connections are built and tested.
-- If a platform API is added later, keep the manual Copy / Share path as a fallback.
+Build for production:
+```bash
+npm run build
+```
